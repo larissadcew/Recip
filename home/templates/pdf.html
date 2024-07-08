@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Receipt</title>
+
+	<!-- Add Bootstrap CSS Link -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.invoice {
+			text-align: center;
+			margin-left: 33%;
+		}
+
+		.o123 {
+			margin-top: 3%;
+			margin-left: 1%;
+		}
+
+		.company {
+			margin-left: 80%;
+			margin-top: -20%;
+		}
+
+		.amount {
+			margin-left: 76%;
+		}
+
+		.total {
+			margin-left: 70%;
+		}
+
+		.sign {
+			margin-top: 3%;
+			margin-left: -13%;
+		}
+
+		.receipt-container {
+			padding: 20px;
+			border: 2px solid #000;
+			border-radius: 10px;
+			background-color: #fff;
+			margin-top: 30px;
+		}
+
+		.receipt-header {
+			text-align: center;
+		}
+
+		.receipt-title {
+			font-size: 24px;
+			color: #333;
+		}
+
+		.receipt-details {
+			font-size: 16px;
+			color: #555;
+			margin-top: 20px;
+		}
+
+		.receipt-table {
+			width: 100%;
+			margin-top: 20px;
+			border-collapse: collapse;
+		}
+
+		.receipt-table th,
+		.receipt-table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		.receipt-total {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			margin-top: 20px;
+		}
+
+		.receipt-footer {
+			margin-top: 20px;
+			font-size: 16px;
+			color: #555;
+		}
+
+		.btn {
+			margin-left: 48%;
+			margin-top: 2%;
+
+		}
+
+		h2 {
+			color: green;
+
+		}
+
+		img {
+			width: 200px;
+			height: 150px;
+		}
+		#date{
+			margin-left: 120px;
+			
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="mn" class="container receipt-container col-8">
+		<div class="receipt-header">
+			<img src="https://cdn3d.iconscout.com/3d/premium/thumb/dollar-5680045-4731439.png" alt="">
+
+		</div>
+	
+
+		<div class="row" >
+			<div class="col-xl-10" id="date">
+
+				<br><br>
+				<br><br>
+				<ul class="list-unstyled company float-end">
+					<li style="font-size: 20px; "> <b>Address :</b></li>
+					<li>Noida,Uttar Pradesh</li>
+					<li>1800 258 4458</li>
+					<li>geeksforgeeks.org</li>
+				</ul>
+			</div>
+		</div>
+		<br><br>
+		<table class="receipt-table">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Amount/Piece</th>
+					<th>Quantity</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+
+
+				{% for receipt in receipts %}
+				<tr>
+				
+				<td>{{receipt.name}}</td>
+				<td> ₹ {{receipt.price}}</td>
+				<td>{{receipt.quantity}}</td>
+				<td> ₹ {{receipt.total}}</td>
+						
+			
+			</tr>
+				{% endfor %}
+			
+			</tbody>
+		</table>
+		<p class="receipt-total">Total Sum: ₹{{ total_sum }}</p>
+		<div class="receipt-footer">
+			<p>Thank you for your purchase!</p>
+		</div>
+	</div>
+
+	<button onclick="myfun('mn')" type="button" class="btn btn-success btn1 ">Generate Receipt</button>
+
+	<!-- Add Bootstrap JS and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function myfun(pa) {
+			let d = document.getElementById(pa).innerHTML;
+			document.body.innerHTML = d;
+			window.print();
+		}
+	</script>
+</body>
+
+</html>
